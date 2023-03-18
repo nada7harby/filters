@@ -10,6 +10,8 @@ let download=document.getElementById("download");
 let reset=document.querySelector("span");
 let img=document.getElementById("img");
 let imgBox=document.querySelector(".img-box");
+var x = document.getElementById("myCanvas");
+var ctx = x.getContext("2d");
 
 
 function resetValue(){
@@ -37,6 +39,12 @@ Upload.onchange=function(){
                file.onload=function(){
                               img.src=file.result;
                }
+               img.onload=function(){
+                              canvas.width=img.width;
+                              canvas.height=img.height;
+                              ctx.drawImage(img,canvas.width,canvas.height);
+                                img.style.display="none"
+               }
 }   
 
 /*saturate.addEventListener("input" ,function(){
@@ -48,8 +56,7 @@ Upload.onchange=function(){
  let filters=document.querySelectorAll("ul li input");
  filters.forEach(filter => {
                filter.addEventListener("input" ,function(){
-                              img.style.filter=`
-                              
+                              img.style.filter= `
                               saturate(${saturate.value}%)
                               contrast(${contrast.value}%)
                               brightness(${brightnes.value}%)
@@ -58,6 +65,15 @@ Upload.onchange=function(){
                               blur(${blur.value}px)
                               hue-rotate(${hueRotate.value}deg)
                                 `
+                                x.style.filter= `
+                                saturate(${saturate.value}%)
+                                contrast(${contrast.value}%)
+                                brightness(${brightnes.value}%)
+                                sepia(${sepia.value}%)
+                                grayscale(${grayscale.value})
+                                blur(${blur.value}px)
+                                hue-rotate(${hueRotate.value}deg)
+                                  `
                              
                })
                
