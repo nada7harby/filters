@@ -10,12 +10,13 @@ let download=document.getElementById("download");
 let reset=document.querySelector("span");
 let img=document.getElementById("img");
 let imgBox=document.querySelector(".img-box");
-var x = document.getElementById("myCanvas");
-var ctx = x.getContext("2d");
+var convas= document.getElementById("myCanvas");
+var ctx =convas.getContext("2d");
 
 
 function resetValue(){
-               img.style.filter="none";
+               ctx.filter="none";
+               ctx.drawImage(img,0,0,convas.width,convas.height); 
                saturate.value="100"
                contrast.value="100"
                brightnes.value="100"
@@ -23,6 +24,7 @@ function resetValue(){
                grayscale.value="0"
                hueRotate.value="0"
 }
+
 
 window.onload=function(){
                download.style.display="none"
@@ -40,10 +42,10 @@ Upload.onchange=function(){
                               img.src=file.result;
                }
                img.onload=function(){
-                              canvas.width=img.width;
-                              canvas.height=img.height;
-                              ctx.drawImage(img,canvas.width,canvas.height);
-                                img.style.display="none"
+                              convas.width =img.width;
+                              convas.height =img.height;
+                              ctx.drawImage(img,0,0,convas.width,convas.height);
+                              img.style.display="none";
                }
 }   
 
@@ -56,16 +58,8 @@ Upload.onchange=function(){
  let filters=document.querySelectorAll("ul li input");
  filters.forEach(filter => {
                filter.addEventListener("input" ,function(){
-                              img.style.filter= `
-                              saturate(${saturate.value}%)
-                              contrast(${contrast.value}%)
-                              brightness(${brightnes.value}%)
-                              sepia(${sepia.value}%)
-                              grayscale(${grayscale.value})
-                              blur(${blur.value}px)
-                              hue-rotate(${hueRotate.value}deg)
-                                `
-                                x.style.filter= `
+                              
+                                ctx.filter= `
                                 saturate(${saturate.value}%)
                                 contrast(${contrast.value}%)
                                 brightness(${brightnes.value}%)
@@ -74,12 +68,13 @@ Upload.onchange=function(){
                                 blur(${blur.value}px)
                                 hue-rotate(${hueRotate.value}deg)
                                   `
-                             
+                              ctx.drawImage(img,0,0,convas.width,convas.height); 
                })
+               
                
  });
  download.onclick=function(){
-               download.href=img.src;
+               download.href=convas.toDataURL();
  }
 
 
