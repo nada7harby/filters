@@ -7,14 +7,14 @@ body{
                background-color: #333;
 }
 .container{
-               background: #146C94 ;
+               background: #3b3d41 ;
                padding: 20px;
                display: flex;
     flex-direction: row;
 
 }
 .img{
-               background-color: #19A7CE;
+               background-color: #37474f;
               padding: 20px;
                margin-left: 10px;
              
@@ -26,7 +26,7 @@ body{
 
 }
 .filters{
-               background-color: #19A7CE;
+               background-color: #37474f;
               
                margin-right: 10px;
             
@@ -75,6 +75,26 @@ a  ,span{
     border-radius:10px ;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
