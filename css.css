@@ -31,7 +31,7 @@ body{
                margin-right: 10px;
             
 }
-img{
+img ,canvas{
                width: 100%;
                
 }
@@ -74,6 +74,10 @@ a  ,span{
     background-color:rgb(21, 143, 15);
     border-radius:10px ;
     
+}
+a:hover{
+    text-decoration: none;
+    color: #fff;
 }
 
 
